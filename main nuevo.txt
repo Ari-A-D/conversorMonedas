@@ -1,0 +1,82 @@
+import com.google.gson.Gson;
+import org.ietf.jgss.GSSContext;
+
+import java.io.IOException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) throws IOException, InterruptedException {
+        Scanner teclado = new Scanner(System.in);
+        int opcion = 0;
+
+        while (opcion != 7) {
+
+            System.out.println("""
+                    --Escriba el numero de la opcion deseada--
+                    1 - Convertir dolares (USD) a pesos argentinos (ARS).
+                    2 - Convertir pesos argentinos (ARS) a dolares (USD).
+                    3 - Convertir dolares (USD) a real brasilenio.
+                    4 - Convertir real brasilenio a dolares.
+                    5 - Convertir dolares (USD) a pesos colombianos.
+                    6 - Convertir pesos colombianos a dolares (USD).
+                    7 - Salir.
+                    """);
+            System.out.println("Seleccione una opcion del menu: ");
+            opcion = teclado.nextInt();
+            System.out.println("Ingrerse el valor que desea convertir: ");
+            double valor = teclado.nextDouble();
+            System.out.println("Escribi el codigo de referencia de la moneda: ");
+            String referencia = teclado.nextLine();
+
+            String busqueda = "https://v6.exchangerate-api.com/v6/21e2f8d34191cd3983a07711/latest/" + referencia;
+
+            HttpClient client = HttpClient.newHttpClient();
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(busqueda))
+                    .build();
+            HttpResponse<String> response = client
+                    .send(request, HttpResponse.BodyHandlers.ofString());
+
+            String json = response.body();
+            System.out.println(json);
+
+            Gson gson = new Gson();
+            var conversion = gson.fromJson(json, Moneda.class);
+
+            Map<String, Double> conversionRates = conversion.getFactoresDeConversion();
+            Double tasaConversion = conversionRates.get("AED"); // Reemplaza "USD" con el código de la moneda que deseas consultar
+            System.out.println(tasaConversion);
+
+            switch (opcion) {
+                case 1:
+                    System.out.println("Opcion 1");
+                    break;
+                case 2:
+                    System.out.println("Opcion 2");
+                    break;
+                case 3:
+                    System.out.println("Opcion 3");
+                    break;
+                case 4:
+                    System.out.println("Opcion 4");
+                    break;
+                case 5:
+                    System.out.println("Opcion 5");
+                    break;
+                case 6:
+                    System.out.println("Opcion 6");
+                    break;
+                default:
+                    System.out.println("------------------------------------------------------------------------------------");
+                    System.out.println("##Usted no ha seleccionado ninguna opcion correcta, vuelva a intentarlo nuevamente##");
+                    System.out.println("------------------------------------------------------------------------------------");
+            }
+        }
+    }
+}

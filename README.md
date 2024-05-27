@@ -7,7 +7,7 @@
 <h2>Descripción</h2>
 <p>El programa posee un menú donde se selecciona entre siete opciones, una de las cuales corresponde a salir del sistema. El mismo convierte el valor de una moneda base de referencia a su equivalente en otro tipo de valuación para otros países</p>
 
-<h2>Logica</h2>
+<h2>Lógica</h2>
 
 <p>El programa posee tres clases. La primera es un objeto modelo de moneda, que tiene como atributo la moneda base (código de la moneda) y un diccionario con los coeficientes de conversión para otros tipos de monedas. Esta clase tiene dos métodos: uno para buscar otra moneda y convertirla, y otro que es el conversor mismo.</p>
 

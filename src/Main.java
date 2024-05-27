@@ -1,37 +1,60 @@
-import com.google.gson.Gson;
 import java.io.IOException;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws IOException, InterruptedException {
-        Scanner teclado = new Scanner(System.in);
-        System.out.println("Escribi el codigo de referencia de la moneda: ");
-        var referencia = teclado.nextLine();
-
-        String busqueda = "https://v6.exchangerate-api.com/v6/21e2f8d34191cd3983a07711/latest/" + referencia;
-
-        HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(busqueda))
-                .build();
-        HttpResponse<String> response = client
-                .send(request, HttpResponse.BodyHandlers.ofString());
-
-        String json = response.body();
-        //System.out.println(json);
-
-        Gson gson = new Gson();
-        var conversion = gson.fromJson(json, Moneda.class);
-        System.out.println(conversion.getFactoresDeConversion());
-
-        Map<String, Double> conversionRates = conversion.getFactoresDeConversion();
-        Double tasaConversion = conversionRates.get("AED"); // Reemplaza "USD" con el código de la moneda que deseas consultar
-        System.out.println(tasaConversion);
-
+        int condicion = 0;
+        while (condicion != 7){
+            Scanner teclado = new Scanner(System.in);
+            String mensaje = """
+                    ******************************************
+                    *Sea bienvenido/a al Conversor de Monedas*
+                    ******************************************
+                    ------------------------------------------
+                    *****Seleccione el tipo de conversion*****
+                    
+                    1 - Dólar a Peso Argentino
+                    2 - Peso Argentino a Dólar
+                    3 - Dólar a Real Brasileño
+                    4 - Real Brasileño a Dólar
+                    5 - Dólar a Peso Colombiano
+                    6 - Peso colombiano a Dólar
+                    7 - Salir
+                    
+                    ****************************************
+                    ----------------------------------------
+                    *******
+                    Opcion:
+                    *******""";
+            System.out.println(mensaje);
+            condicion = teclado.nextInt();
+            System.out.println("#----Ingrese el valor que desea convertir----#");
+            double valor = teclado.nextDouble();
+            switch (condicion){
+                case 1:
+                    System.out.println("opcion1");
+                    break;
+                case 2:
+                    System.out.println("opcion2");
+                    break;
+                case 3:
+                    System.out.println("opcion3");
+                    break;
+                case 4:
+                    System.out.println("opcion4");
+                    break;
+                case 5:
+                    System.out.println("opcion5");
+                    break;
+                case 6:
+                    System.out.println("opcion6");
+                    break;
+                case 7:
+                    System.out.println("opcion7");
+                    break;
+                default:
+                    System.out.println("Elija una opcion valida");
+            }
+        }
     }
 }

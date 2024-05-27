@@ -37,7 +37,7 @@ public class Moneda {
 
     public double convertirMoneda(String clave, double valorMoneda) {
         double coeficienteConversion = obtenerCoeficiente(clave);
-        if (coeficienteConversion == -1) { // Verifica que el valor obtenido no sea el valor por defecto/error
+        if (coeficienteConversion!= -1) { // Verifica que el valor obtenido no sea el valor por defecto/error
             return coeficienteConversion * valorMoneda;
         } else {
             System.out.println("Error al obtener el valor para la clave " + clave);

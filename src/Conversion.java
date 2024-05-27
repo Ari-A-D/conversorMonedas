@@ -3,7 +3,6 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.Map;
 
 public class Conversion {
     public static void convertirMoneda(String monedaReferencia, String monedaConversion, double valorMonedaOriginal) throws Exception {
@@ -19,8 +18,9 @@ public class Conversion {
         Gson gson = new Gson();
         var conversion = gson.fromJson(response.body(), Moneda.class);
         double valorMonedaNuevo = conversion.convertirMoneda(monedaConversion, valorMonedaOriginal);
-
-        System.out.println("Resultado de la conversión: " + valorMonedaNuevo);
+        String mensajeSalida = """
+                El valor %.2f [%s] equivale a %.2f [%s]""".formatted(valorMonedaOriginal,monedaReferencia,valorMonedaNuevo,monedaConversion);
+        System.out.println(mensajeSalida);
     }
 }
 

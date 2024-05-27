@@ -8,6 +8,7 @@ public class Main {
         while (continuar) { // Cambiar la condición del bucle while para usar esta variable
             Scanner teclado = new Scanner(System.in);
             String mensaje = """
+                    
                     ******************************************
                     *Sea bienvenido/a al Conversor de Monedas*
                     ******************************************
@@ -24,14 +25,14 @@ public class Main {
                     
                     ****************************************
                     ----------------------------------------
-                    
-                    Elija una Opcion:""";
+                    Elija una opcion dentro el menu:""";
             System.out.println(mensaje);
             condicion = teclado.nextInt();
 
             // Verificar si el usuario eligió salir
             if (condicion == 7) {
                 continuar = false; // Cambiar la variable para salir del bucle
+                System.out.println("Gracias por utilizar el sistema. Hasta luego...");
             } else {
                 // Solo intentar convertir si la opción es válida
                 System.out.println("#----Ingrese el valor que desea convertir----#");
@@ -74,7 +75,7 @@ public class Main {
                         break;
                     case 6:
                         try {
-                            Conversion.convertirMoneda("CCC", "USD", valor);
+                            Conversion.convertirMoneda("COP", "USD", valor);
                         } catch (Exception e) {
                             System.out.println(e.getMessage());
                         }

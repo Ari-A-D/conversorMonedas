@@ -5,4 +5,4 @@
 </p>
 
 <h2>Descripción</h2>
-<p>EL programa posee un menu, donde se selecciona entre 7 oopciones, las cuales una de ella corresponde a salir del sistema, el mismo convierte el valor de una moneda base de referencia, a su equivalente en otro tipo de valuacion para otros paises.</p>
+<p>El programa posee un menú donde se selecciona entre siete opciones, una de las cuales corresponde a salir del sistema. El mismo convierte el valor de una moneda base de referencia a su equivalente en otro tipo de valuación para otros países</p>

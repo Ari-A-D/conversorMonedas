@@ -31,17 +31,17 @@ public class Moneda {
         } else {
             // Manejar caso cuando la clave no existe en el mapa
             System.out.println("La clave " + clave + " no existe en los factores de conversión.");
-            return -1; // Valor por defecto o manejo de error
+            throw new RuntimeException("La clave " + clave + " no existe en los factores de conversión."); // Lanza una excepción
         }
     }
 
     public double convertirMoneda(String clave, double valorMoneda) {
         double coeficienteConversion = obtenerCoeficiente(clave);
-        if (coeficienteConversion!= -1) { // Verifica que el valor obtenido no sea el valor por defecto/error
+        if (coeficienteConversion == -1) { // Verifica que el valor obtenido no sea el valor por defecto/error
             return coeficienteConversion * valorMoneda;
         } else {
             System.out.println("Error al obtener el valor para la clave " + clave);
-            return -1; // Retornar un valor por defecto o manejo de error
+            throw new RuntimeException("Error al obtener el valor para la clave " + clave); // Lanza una excepción
         }
     }
 

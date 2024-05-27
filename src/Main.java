@@ -1,11 +1,9 @@
-import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws IOException, InterruptedException {
-        int condicion = 0;
+    public static void main(String[] args){
         boolean continuar = true; // Variable para controlar la salida del bucle while
-        while (continuar) { // Cambiar la condición del bucle while para usar esta variable
+        while (continuar) { // Cambia la condición del bucle while para usar esta variable
             Scanner teclado = new Scanner(System.in);
             String mensaje = """
                     
@@ -25,9 +23,9 @@ public class Main {
                     
                     ****************************************
                     ----------------------------------------
-                    Elija una opcion dentro el menu:""";
+                    Elija una opción dentro del menu:""";
             System.out.println(mensaje);
-            condicion = teclado.nextInt();
+            int condicion = teclado.nextInt();
 
             // Verificar si el usuario eligió salir
             if (condicion == 7) {

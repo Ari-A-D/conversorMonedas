@@ -9,6 +9,8 @@ public class Moneda {
     @SerializedName("conversion_rates")
     private Map<String, Double> factoresDeConversion;
 
+    //METODOS GETTERS y SETTERS para explorar las variables del json y buscar como extraer el coeficiente
+
     public String getDenominacionBase() {
         return denominacionBase;
     }
